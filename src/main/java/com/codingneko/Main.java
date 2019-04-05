@@ -20,9 +20,10 @@ public class Main extends ListenerAdapter {
     public static JDA api;
 
     public static void main(String[] args) {
+        Thread console = new Thread(new ConsoleThread());
+        console.start();
 
         Config c = new Config();
-
 
         try {
             api = (new JDABuilder(AccountType.BOT)).setToken(c.getToken()).build();
